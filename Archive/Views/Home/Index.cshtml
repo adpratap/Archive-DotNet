@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Archive.Models.Domain.ArchiveModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1>Home Archives!</h1>
+    <a class="btn btn-success" asp-controller="Home" asp-action="Create" role="button">Create New</a>
+</div>
+
+<div class="text-center">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Body</th>
+                <th scope="col">Time</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <th scope="row">@obj.id</th>
+                    <td>@obj.Title</td>
+                    <td>@obj.Description</td>
+                    <td>@obj.Body</td>
+                    <td>@obj.DateAndTime</td>
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Home" asp-action="Update" asp-route-id="@obj.id" role="button">Update</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@obj.id" role="button">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
